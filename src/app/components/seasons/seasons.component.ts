@@ -26,12 +26,25 @@ export class SeasonsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // This function return information about the seasons passed in param
   public getSeasonById(id: number): Season {
     return this.seasons[id];
   }
 
+  // This function return the list of season
   public getAllSeasons(): Season[] {
     return this.seasons;
+  }
+
+  // This function create a new season
+  public addSeason(id: number, fkSeries: Series, num: number): void{
+    const newSeason = new Season(id, fkSeries, num);
+    this.seasons.push(newSeason);
+  }
+
+  // This function remove an entry from Season object
+  public removeSeason(id: number): void{
+    this.seasons.splice(id);
   }
 
 }
