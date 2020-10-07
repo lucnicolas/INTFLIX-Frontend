@@ -5,6 +5,5 @@ export class Season {
     public id: number,
     public fkSeries: Series,
     public num: number,
-  ) {
-  }
+  ) { }
 }

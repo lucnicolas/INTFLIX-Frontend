@@ -14,14 +14,14 @@ export class EpisodesService {
   constructor(seasonsService: SeasonsService) {
     this.seasons = seasonsService.getAllSeasons();
     this.episodes = [
-      new Episode(1, this.seasons[0], 'MyEpisode1', 1),
-      new Episode(2, this.seasons[0], 'MyEpisode2', 2),
-      new Episode(3, this.seasons[1], 'MyEpisode1', 1),
-      new Episode(4, this.seasons[1], 'MyEpisode2', 2),
-      new Episode(5, this.seasons[2], 'MyEpisode1', 1),
-      new Episode(6, this.seasons[2], 'MyEpisode2', 2),
-      new Episode(7, this.seasons[3], 'MyEpisode1', 1),
-      new Episode(8, this.seasons[3], 'MyEpisode2', 2),
+      new Episode(0, this.seasons[0], 'MyEpisode1', 1),
+      new Episode(1, this.seasons[0], 'MyEpisode2', 2),
+      new Episode(2, this.seasons[1], 'MyEpisode3', 1),
+      new Episode(3, this.seasons[1], 'MyEpisode4', 2),
+      new Episode(4, this.seasons[2], 'MyEpisode5', 1),
+      new Episode(5, this.seasons[2], 'MyEpisode6', 2),
+      new Episode(6, this.seasons[3], 'MyEpisode7', 1),
+      new Episode(7, this.seasons[3], 'MyEpisode8', 2),
     ];
   }
 
@@ -48,12 +48,10 @@ export class EpisodesService {
 
   // This function remove an entry from Series object
   public removeEpisode(id: number): void {
-    id--;
     this.episodes.splice(id);
   }
 
   public changeSeenState(id: number): void {
-    id--;
     this.episodes[id].seen = !this.episodes[id].seen;
   }
 }

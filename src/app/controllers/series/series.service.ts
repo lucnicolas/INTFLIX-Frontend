@@ -7,7 +7,7 @@ import {Series} from '../../models/series/series';
 export class SeriesService {
 
   series = [
-    new Series(1, 'MySeries1'),
+    new Series(0, 'MySeries1'),
     new Series(1, 'MySeries2'),
   ];
 
@@ -31,7 +31,6 @@ export class SeriesService {
 
   // This function remove an entry from Series object
   public removeSeries(id: number): void {
-    id--;
     this.series.splice(id);
   }
 }

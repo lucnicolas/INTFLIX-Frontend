@@ -13,10 +13,10 @@ export class SeasonsService {
   constructor(seriesService: SeriesService) {
     this.series = seriesService.getAllSeries();
     this.seasons = [
-      new Season(1, this.series[0], 1),
-      new Season(2, this.series[0], 2),
-      new Season(3, this.series[1], 1),
-      new Season(4, this.series[1], 2),
+      new Season(0, this.series[0], 1),
+      new Season(1, this.series[0], 2),
+      new Season(2, this.series[1], 1),
+      new Season(3, this.series[1], 2),
     ];
   }
 
@@ -38,7 +38,6 @@ export class SeasonsService {
 
   // This function remove an entry from Season object
   public removeSeason(id: number): void {
-    id--;
     this.seasons.splice(id);
   }
 }

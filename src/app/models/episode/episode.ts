@@ -7,7 +7,5 @@ export class Episode {
     public title: string,
     public num: number,
     public seen: boolean = false,
-  ) {
-  }
-
+  ) { }
 }
