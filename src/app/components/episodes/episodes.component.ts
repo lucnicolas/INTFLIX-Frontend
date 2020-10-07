@@ -11,14 +11,23 @@ import {EpisodesService} from '../../controllers/episodes/episodes.service';
   styleUrls: ['./episodes.component.css']
 })
 export class EpisodesComponent implements OnInit {
+  private episodesService: EpisodesService;
   public seasons: Season[];
   public episodes: Episode[];
 
   constructor(episodesService: EpisodesService) {
+    this.episodesService = episodesService;
     this.episodes = episodesService.getAllEpisodes();
   }
 
   ngOnInit(): void {
   }
 
+  onclickDelete(episodeId: number): void {
+    this.episodesService.removeEpisode(episodeId);
+  }
+
+  onClickChangeSeenState(id: number): void {
+    this.episodesService.changeSeenState(id);
+  }
 }

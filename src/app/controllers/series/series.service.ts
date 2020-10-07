@@ -30,7 +30,8 @@ export class SeriesService {
   }
 
   // This function remove an entry from Series object
-  public removeSeries(id: number): void{
+  public removeSeries(id: number): void {
+    id--;
     this.series.splice(id);
   }
 }

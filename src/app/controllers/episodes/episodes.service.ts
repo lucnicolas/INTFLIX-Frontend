@@ -47,7 +47,13 @@ export class EpisodesService {
   }
 
   // This function remove an entry from Series object
-  public removeEpisode(id: number): void{
+  public removeEpisode(id: number): void {
+    id--;
     this.episodes.splice(id);
+  }
+
+  public changeSeenState(id: number): void {
+    id--;
+    this.episodes[id].seen = !this.episodes[id].seen;
   }
 }

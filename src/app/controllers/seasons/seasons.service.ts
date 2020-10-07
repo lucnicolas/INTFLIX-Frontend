@@ -37,7 +37,8 @@ export class SeasonsService {
   }
 
   // This function remove an entry from Season object
-  public removeSeason(id: number): void{
+  public removeSeason(id: number): void {
+    id--;
     this.seasons.splice(id);
   }
 }
