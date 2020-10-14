@@ -7,10 +7,12 @@ import {SeriesComponent} from './components/series/series.component';
 import {SeasonsComponent} from './components/seasons/seasons.component';
 import {EpisodesComponent} from './components/episodes/episodes.component';
 import { PageNotFoundComponent } from './components/PageNotFound/page-not-found/page-not-found.component';
+import {AuthService} from './auth/auth.service';
+import {AuthGuard} from './auth/auth.guard';
 
 const routes: Routes = [
-  { path: 'episodes', component: EpisodesComponent},
-  { path: 'episodes/:id', component: EpisodesComponent},
+  { path: 'episodes', component: EpisodesComponent, canActivate: [AuthGuard]},
+  { path: 'episodes/:id', component: EpisodesComponent, canActivate: [AuthGuard]},
   { path: '',   redirectTo: '/episodes', pathMatch: 'full' }, // redirect to `episodes`
   { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ]; // sets up routes constant where you define your routes
@@ -29,7 +31,7 @@ const routes: Routes = [
     [RouterModule.forRoot(routes)]
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
