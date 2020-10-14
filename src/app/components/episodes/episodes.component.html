@@ -1,30 +1,28 @@
-<div class="container">
-  <h1>Hello everyone !</h1>
+<h1>Hello everyone !</h1>
 
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Episode</th>
-      <th scope="col">Season</th>
-      <th scope="col">Series</th>
-      <th scope="col">Is seen</th>
-      <th scope="col">Actions</th>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Episode</th>
+    <th scope="col">Season</th>
+    <th scope="col">Series</th>
+    <th scope="col">Is seen</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let currentEpisode of episodes" [ngClass]="{'bg-success text-white': currentEpisode.seen}">
+      <th scope="row">{{ currentEpisode.id }}</th>
+      <td>{{ currentEpisode.title }} (Episode {{ currentEpisode.num }})</td>
+      <td>Season {{ currentEpisode.fkSeason.num }}</td>
+      <td>{{ currentEpisode.fkSeason.fkSeries.name }}</td>
+      <td>
+        <input (click)="onClickChangeSeenState(currentEpisode.id)" type="checkbox" id="inlineCheckbox1" value="option1">
+      </td>
+      <td>
+        <button (click)="onclickDelete(currentEpisode.id)"class="btn btn-danger">Remove</button>
+      </td>
     </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let currentEpisode of episodes" [ngClass]="{'bg-success text-white': currentEpisode.seen}">
-        <th scope="row">{{ currentEpisode.id }}</th>
-        <td>{{ currentEpisode.title }} (Episode {{ currentEpisode.num }})</td>
-        <td>Season {{ currentEpisode.fkSeason.num }}</td>
-        <td>{{ currentEpisode.fkSeason.fkSeries.name }}</td>
-        <td>
-          <input (click)="onClickChangeSeenState(currentEpisode.id)" type="checkbox" id="inlineCheckbox1" value="option1">
-        </td>
-        <td>
-          <button (click)="onclickDelete(currentEpisode.id)"class="btn btn-danger">Remove</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  </tbody>
+</table>
