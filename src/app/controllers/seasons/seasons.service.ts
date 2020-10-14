@@ -30,6 +30,10 @@ export class SeasonsService {
     return this.seasons;
   }
 
+  getSeasonsBySeries(seriesId: number): Season[] {
+    return this.seasons;
+  }
+
   // This function create a new season
   public addSeason(id: number, fkSeries: Series, num: number): void{
     const newSeason = new Season(id, fkSeries, num);

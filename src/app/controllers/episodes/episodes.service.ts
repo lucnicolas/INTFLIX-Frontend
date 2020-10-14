@@ -14,7 +14,7 @@ export class EpisodesService {
   constructor(seasonsService: SeasonsService) {
     this.seasons = seasonsService.getAllSeasons();
     this.episodes = [
-      new Episode(0, this.seasons[0], 'MyEpisode1', 1),
+      new Episode(0, this.seasons[0], 'MyEpisode1', 1, true),
       new Episode(1, this.seasons[0], 'MyEpisode2', 2),
       new Episode(2, this.seasons[1], 'MyEpisode3', 1),
       new Episode(3, this.seasons[1], 'MyEpisode4', 2),
@@ -32,6 +32,10 @@ export class EpisodesService {
 
   // This function return the list of Episode
   public getAllEpisodes(): Episode[] {
+    return this.episodes;
+  }
+
+  public getEpisodesBySeason(seasonId: number): Episode[] {
     return this.episodes;
   }
 

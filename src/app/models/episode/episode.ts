@@ -6,6 +6,6 @@ export class Episode {
     public fkSeason: Season,
     public title: string,
     public num: number,
-    public seen: boolean = false,
+    public seen?: boolean,
   ) { }
 }

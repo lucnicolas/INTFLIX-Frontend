@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Episode} from '../../models/episode/episode';
-import {Season} from '../../models/season/season';
 import {EpisodesService} from '../../controllers/episodes/episodes.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-episodes',
@@ -10,15 +10,18 @@ import {EpisodesService} from '../../controllers/episodes/episodes.service';
 })
 export class EpisodesComponent implements OnInit {
   private episodesService: EpisodesService;
-  public seasons: Season[];
-  public episodes: Episode[];
+  public episode: Episode;
 
-  constructor(episodesService: EpisodesService) {
+  constructor(episodesService: EpisodesService, private route: ActivatedRoute) {
     this.episodesService = episodesService;
-    this.episodes = episodesService.getAllEpisodes();
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      if (params.episodeId) {
+        this.episode = this.episodesService.getEpisodeById(params.episodeId);
+      }
+    });
   }
 
   onclickDelete(episodeId: number): void {

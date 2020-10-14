@@ -6,14 +6,15 @@ import {AppComponent} from './app.component';
 import {SeriesComponent} from './components/series/series.component';
 import {SeasonsComponent} from './components/seasons/seasons.component';
 import {EpisodesComponent} from './components/episodes/episodes.component';
-import { PageNotFoundComponent } from './components/PageNotFound/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import {AuthService} from './auth/auth.service';
 import {AuthGuard} from './auth/auth.guard';
 
 const routes: Routes = [
-  { path: 'episodes', component: EpisodesComponent, canActivate: [AuthGuard]},
-  { path: 'episodes/:id', component: EpisodesComponent, canActivate: [AuthGuard]},
-  { path: '',   redirectTo: '/episodes', pathMatch: 'full' }, // redirect to `episodes`
+  { path: 'home', component: SeriesComponent},
+  { path: ':seriesName/:seriesId', component: SeasonsComponent},
+  { path: ':seriesName/:episodeTitle/:episodeId', component: EpisodesComponent, canActivate: [AuthGuard]},
+  { path: '',   redirectTo: '/home', pathMatch: 'full' }, // redirect to `home`
   { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ]; // sets up routes constant where you define your routes
 
